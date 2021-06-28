@@ -1,0 +1,112 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"particle": "origins-spore-blossom:petal",
+		"petal": "origins-spore-blossom:petal",
+		"base": "origins-spore-blossom:base"
+	},
+	"elements": [
+		{
+			"name": "base",
+			"from": [1, 0.1, 1],
+			"to": [15, 0.1, 15],
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 2.69091, 8]},
+			"faces": {
+				"up": {"uv": [1, 15, 15, 1], "texture": "#base"},
+				"down": {"uv": [1, 15, 15, 1], "texture": "#base"}
+			}
+		},
+		{
+			"name": "petal_north",
+			"from": [0, 0.50483, -6.97024],
+			"to": [16, 0.50483, 9.02976],
+			"shade": false,
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 2.69091, 8]},
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#petal"},
+				"down": {"uv": [0, 16, 16, 0], "texture": "#petal"}
+			}
+		},
+		{
+			"name": "petal_south",
+			"from": [0, 0.50483, 6.97024],
+			"to": [16, 0.50483, 22.97024],
+			"shade": false,
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 2.69091, 8]},
+			"faces": {
+				"up": {"uv": [16, 16, 0, 0], "texture": "#petal"},
+				"down": {"uv": [16, 0, 0, 16], "texture": "#petal"}
+			}
+		},
+		{
+			"name": "petal_east",
+			"from": [-6.97024, 0.50483, 0],
+			"to": [9.02976, 0.50483, 16],
+			"shade": false,
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [8, 2.69091, 8]},
+			"faces": {
+				"up": {"uv": [16, 16, 0, 0], "rotation": 90, "texture": "#petal"},
+				"down": {"uv": [16, 0, 0, 16], "rotation": 270, "texture": "#petal"}
+			}
+		},
+		{
+			"name": "petal_west",
+			"from": [6.97024, 0.50483, 0],
+			"to": [22.97024, 0.50483, 16],
+			"shade": false,
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [8, 2.69091, 8]},
+			"faces": {
+				"up": {"uv": [16, 16, 0, 0], "rotation": 270, "texture": "#petal"},
+				"down": {"uv": [16, 0, 0, 16], "rotation": 90, "texture": "#petal"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0.5, 45, 0],
+			"translation": [0, 3, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0.5, 45, 0],
+			"translation": [0, 3, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 225, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"translation": [0, 3.25, 0],
+			"scale": [0.8, 0.8, 0.8]
+		},
+		"head": {
+			"rotation": [0, 0, -180],
+			"translation": [0, -0.25, 0],
+			"scale": [1.25, 1.25, 1.25]
+		},
+		"fixed": {
+			"rotation": [-90, 0, 0],
+			"translation": [0, 0, -32.75],
+			"scale": [4, 4, 4]
+		}
+	},
+	"groups": [0,
+		{
+			"name": "petal",
+			"origin": [8, 2.69091, 8],
+			"children": [1, 2, 3, 4]
+		}
+	]
+}

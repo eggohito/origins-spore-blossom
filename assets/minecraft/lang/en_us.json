@@ -1,0 +1,8 @@
+{
+    "[Spore Blossom (Origins)] Please apply the resourcepack to see the custom assets!": "",
+    "death.attack.natural_dryout": "%s dried out",
+    "death.attack.spore_blossom.connected_damage": "%s died due to the pain inflicted upon one of its Spore Blossoms",
+
+    "item.origins-spore-blossom.bulb": "Spore Bulb",
+    "item.origins-spore-blossom.main": "Spore Blossom"
+}
