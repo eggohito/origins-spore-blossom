@@ -1,0 +1,15 @@
+{
+    "condition": "minecraft:alternative",
+    "terms": [
+        {
+            "condition": "minecraft:entity_scores",
+            "entity": "this",
+            "scores": {
+                "o-s-b.tp_to": {
+                    "min": -2147483648,
+                    "max": 2147483647
+                }
+            }
+        }
+    ]
+}

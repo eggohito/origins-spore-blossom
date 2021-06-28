@@ -187,15 +187,15 @@
         "type": "origins:action_on_callback",
         "entity_action_chosen": {
             "type": "origins:execute_command",
-            "command": "loot replace entity @s armor.head loot origins-spore-blossom:item"
+            "command": "function origins-spore-blossom:init/chosen"
         },
         "entity_action_lost": {
             "type": "origins:execute_command",
-            "command": "clear @s minecraft:peony{eggohito: {o-s-b: {sporeBlossom: 1b}}}"
+            "command": "function origins-spore-blossom:init/lost"
         },
         "entity_action_respawned": {
             "type": "origins:execute_command",
-            "command": "loot replace entity @s armor.head loot origins-spore-blossom:item"
+            "command": "function origins-spore-blossom:init/respawned"
         }
     },
     "name": "Spore Network",

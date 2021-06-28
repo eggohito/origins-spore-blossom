@@ -29,6 +29,10 @@ execute as @e[tag = o-s-b.marker] at @s run function origins-spore-blossom:marke
 #
 #   - the tag being `o-s-b-entangle_roots.init`
 #
+scoreboard players enable @a[tag = o-s-b.player] o-s-b.tp_to
+
+execute as @a[tag = !o-s-b.player, predicate = origins-spore-blossom:has_triggers] run function origins-spore-blossom:internal/triggers
+
 execute as @a[tag = o-s-b.entangle_roots.init] at @s run function origins-spore-blossom:raycast/summon/init
 
 

@@ -14,8 +14,4 @@ execute as @a unless score @s o-s-b.pID = @s o-s-b.pID run scoreboard players ad
 scoreboard players operation @s o-s-b.pID = #players o-s-b.pID
 
 
-scoreboard players enable @s o-s-b.tp_to
-
-scoreboard players set @s o-s-b.bulb 0
-
 scoreboard players set @s o-s-b.ns 0
