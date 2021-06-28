@@ -1,0 +1,78 @@
+[
+    {
+        "condition": "minecraft:location_check",
+        "offsetX": -1,
+        "offsetZ": 1,
+        "predicate": {
+            "block": {
+                "tag": "origins-spore-blossom:player_can_pass"
+            }
+        }
+    },
+    {
+        "condition": "minecraft:location_check",
+        "offsetX": -1,
+        "predicate": {
+            "block": {
+                "tag": "origins-spore-blossom:player_can_pass"
+            }
+        }
+    },
+    {
+        "condition": "minecraft:location_check",
+        "offsetX": -1,
+        "offsetZ": -1,
+        "predicate": {
+            "block": {
+                "tag": "origins-spore-blossom:player_can_pass"
+            }
+        }
+    },
+    {
+        "condition": "minecraft:location_check",
+        "offsetZ": 1,
+        "predicate": {
+            "block": {
+                "tag": "origins-spore-blossom:player_can_pass"
+            }
+        }
+    },
+    {
+        "condition": "minecraft:location_check",
+        "offsetZ": -1,
+        "predicate": {
+            "block": {
+                "tag": "origins-spore-blossom:player_can_pass"
+            }
+        }
+    },
+    {
+        "condition": "minecraft:location_check",
+        "offsetX": 1,
+        "offsetZ": 1,
+        "predicate": {
+            "block": {
+                "tag": "origins-spore-blossom:player_can_pass"
+            }
+        }
+    },
+    {
+        "condition": "minecraft:location_check",
+        "offsetX": 1,
+        "predicate": {
+            "block": {
+                "tag": "origins-spore-blossom:player_can_pass"
+            }
+        }
+    },
+    {
+        "condition": "minecraft:location_check",
+        "offsetX": 1,
+        "offsetZ": -1,
+        "predicate": {
+            "block": {
+                "tag": "origins-spore-blossom:player_can_pass"
+            }
+        }
+    }
+]

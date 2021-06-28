@@ -1,0 +1,501 @@
+{
+    "type": "origins:multiple",
+    "bar": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 50,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/resource_bar.png",
+            "bar_index": 1,
+            "condition": {
+                "type": "origins:or",
+                "conditions": [
+                    {
+                        "type": "origins:gamemode",
+                        "gamemode": "survival"
+                    },
+                    {
+                        "type": "origins:gamemode",
+                        "gamemode": "adventure"
+                    }
+                ]
+            }
+        }
+    },
+    "in_moisture_biome": {
+        "type": "origins:simple",
+        "condition": {
+            "type": "origins:biome",
+            "condition": {
+                "type": "origins:or",
+                "conditions": [
+                    {
+                        "type": "origins:category",
+                        "category": "jungle"
+                    },
+                    {
+                        "type": "origins:category",
+                        "category": "swamp"
+                    },
+                    {
+                        "type": "origins:category",
+                        "category": "mushroom"
+                    },
+                    {
+                        "type": "origins:category",
+                        "category": "extreme_hills"
+                    },
+                    {
+                        "type": "origins:precipitation",
+                        "precipitation": "snow"
+                    }
+                ]
+            }
+        }
+    },
+    "in_moisture_biome_process": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_bar",
+                        "comparison": "<",
+                        "compare_to": 50
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": 1
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_bar",
+                        "comparison": ">",
+                        "compare_to": 50
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": -1
+                    }
+                }
+            ]
+        },
+        "interval": 20,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "*:*_in_moisture_biome"
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "*:*_moisture_bar",
+                            "comparison": ">",
+                            "compare_to": 50
+                        },
+                        {
+                            "type": "origins:resource",
+                            "resource": "*:*_moisture_bar",
+                            "comparison": "<",
+                            "compare_to": 50
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "valid_drink": {
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_bar",
+            "change": 5
+        },
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "origins-spore-blossom:valid_drinks"
+            }
+        }
+    },
+    "invalid_drink": {
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bar",
+                    "change": 5
+                },
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "*:*_poisoning_timer"
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "origins-spore-blossom:invalid_drinks"
+            }
+        }
+    },
+    "poisoning_timer": {
+        "type": "origins:cooldown",
+        "cooldown": 80,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "poisoning": {
+        "type": "origins:damage_over_time",
+        "interval": 20,
+        "damage": 1,
+        "damage_source": {
+            "name": "generic",
+            "bypasses_armor": true,
+            "unblockable": true
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_poisoning_timer",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "increase_const1": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bar",
+                    "change": 1
+                }
+            ]
+        },
+        "interval": 40,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "survival"
+                        },
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "adventure"
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:power_active",
+                            "power": "*:*_increase_const2"
+                        },
+                        {
+                            "type": "origins:power_active",
+                            "power": "*:*_in_moisture_biome"
+                        }
+                    ],
+                    "inverted": true
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:in_rain"
+                        },
+                        {
+                            "type": "origins:in_block_anywhere",
+                            "block_condition": {
+                                "type": "origins:block",
+                                "block": "minecraft:water"
+                            },
+                            "comparison": ">",
+                            "compare_to": 0
+                        },
+                        {
+                            "type": "origins:in_block",
+                            "block_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:block",
+                                        "block": "minecraft:cauldron"
+                                    },
+                                    {
+                                        "type": "origins:block_state",
+                                        "property": "level",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "increase_const2": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bar",
+                    "change": 1
+                }
+            ]
+        },
+        "interval": 10,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "survival"
+                        },
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "adventure"
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:power_active",
+                    "power": "*:*_in_moisture_biome",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:submerged_in",
+                    "fluid": "minecraft:water"
+                },
+                {
+                    "type": "origins:in_block",
+                    "block_condition": {
+                        "type": "origins:fluid",
+                        "fluid_condition": {
+                            "type": "origins:in_tag",
+                            "tag": "minecraft:water"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "decrease_const1": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bar",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 80,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "survival"
+                        },
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "adventure"
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:power_active",
+                            "power": "*:*_increase_const1"
+                        },
+                        {
+                            "type": "origins:power_active",
+                            "power": "*:*_increase_const2"
+                        },
+                        {
+                            "type": "origins:power_active",
+                            "power": "*:*_decrease_const2"
+                        },
+                        {
+                            "type": "origins:power_active",
+                            "power": "*:*_in_moisture_biome"
+                        }
+                    ],
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "decrease_const2": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bar",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 20,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "survival"
+                        },
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "adventure"
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:power_active",
+                            "power": "*:*_increase_const1"
+                        },
+                        {
+                            "type": "origins:power_active",
+                            "power": "*:*_in_moisture_biome"
+                        }
+                    ],
+                    "inverted": true
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:biome",
+                            "condition": {
+                                "type": "origins:temperature",
+                                "comparison": ">=",
+                                "compare_to": 1
+                            }
+                        },
+                        {
+                            "type": "origins:block_in_radius",
+                            "block_condition": {
+                                "type": "origins:or",
+                                "conditions": [
+                                    {
+                                        "type": "origins:in_tag",
+                                        "tag": "minecraft:fire"
+                                    },
+                                    {
+                                        "type": "origins:block",
+                                        "block": "minecraft:lava"
+                                    },
+                                    {
+                                        "type": "origins:and",
+                                        "conditions": [
+                                            {
+                                                "type": "origins:in_tag",
+                                                "tag": "origins-spore-blossom:heat_producers"
+                                            },
+                                            {
+                                                "type": "origins:block_state",
+                                                "property": "lit",
+                                                "value": true
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "radius": 6,
+                            "shape": "star",
+                            "comparison": ">=",
+                            "compare_to": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "drown": {
+        "type": "origins:damage_over_time",
+        "interval": 20,
+        "damage": 2,
+        "damage_easy": 1,
+        "damage_source": {
+            "name": "drown",
+            "bypasses_armor": true,
+            "unblockable": true
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bar",
+            "comparison": "==",
+            "compare_to": 100
+        }
+    },
+    "dryout": {
+        "type": "origins:damage_over_time",
+        "interval": 20,
+        "damage": 2,
+        "damage_easy": 1,
+        "damage_source": {
+            "name": "natural_dryout",
+            "bypasses_armor": true,
+            "unblockable": true
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bar",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+    "respawn": {
+        "type": "origins:action_on_callback",
+        "entity_action_respawned": {
+            "type": "origins:execute_command",
+            "command": "resource set @s origins-spore-blossom:moisture_bar 50"
+        }
+    },
+    "name": "Moisture",
+    "description": "Due to your plant nature, being too dry or wet can kill you. \n\n* Water sources, rain and drinking potions can hydrate you whilst blocks that can be lit (or fire/lava) can dry you."
+}

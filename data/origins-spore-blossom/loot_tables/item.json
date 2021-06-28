@@ -1,0 +1,46 @@
+{
+    "type": "minecraft:generic",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:peony"
+                }
+            ],
+            "functions": [
+                {
+                    "function": "minecraft:set_name",
+                    "name": {
+                        "translate": "item.origins-spore-blossom.main",
+                        "italic": false,
+                        "color": "light_purple"
+                    }
+                },
+                {
+                    "function": "minecraft:set_enchantments",
+                    "enchantments": {
+                        "minecraft:binding_curse": 1
+                    }
+                },
+                {
+                    "function": "minecraft:set_attributes",
+                    "modifiers": [
+                        {
+                            "name": "Armor points",
+                            "attribute": "minecraft:generic.armor",
+                            "operation": "addition",
+                            "amount": 3,
+                            "slot": "head"
+                        }
+                    ]
+                },
+                {
+                    "function": "minecraft:set_nbt",
+                    "tag": "{eggohito: {o-s-b: {sporeBlossom: 1b}}, HideFlags: 1, CustomModelData: 2}"
+                }
+            ]
+        }
+    ]
+}

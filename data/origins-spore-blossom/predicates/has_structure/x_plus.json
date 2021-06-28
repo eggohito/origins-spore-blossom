@@ -1,0 +1,23 @@
+[
+    {
+        "condition": "minecraft:location_check",
+        "predicate": {
+            "block": {
+                "block": "minecraft:structure_void"
+            }
+        }
+    },
+    {
+        "condition": "minecraft:location_check",
+        "offsetX": -1,
+        "predicate": {
+            "block": {
+                "tag": "origins-spore-blossom:plantable_on"
+            }
+        }
+    },
+    {
+        "condition": "minecraft:reference",
+        "name": "origins-spore-blossom:has_structure/pos_check/x"
+    }
+]

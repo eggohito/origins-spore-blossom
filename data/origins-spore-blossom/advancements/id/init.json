@@ -1,0 +1,10 @@
+{
+    "criteria": {
+        "join_world": {
+            "trigger": "minecraft:tick"
+        }
+    },
+    "rewards": {
+        "function": "origins-spore-blossom:id/init"
+    }
+}

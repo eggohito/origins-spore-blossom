@@ -1,0 +1,24 @@
+{
+    "criteria": {
+        "select": {
+            "trigger": "minecraft:tick",
+            "conditions": {
+                "player": [
+                    {
+                        "condition": "minecraft:entity_scores",
+                        "entity": "this",
+                        "scores": {
+                            "o-s-b.tp_to": {
+                                "min": 0,
+                                "max": 2147483647
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "origins-spore-blossom:marker/target/init"
+    }
+}

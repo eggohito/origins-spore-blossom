@@ -1,0 +1,16 @@
+{
+    "powers": [
+        "origins-spore-blossom:entangle_roots",
+        "origins-spore-blossom:moisture",
+        "origins-spore-blossom:plant-like_nature",
+        "origins-spore-blossom:spore_network"
+    ],
+    "icon": {
+        "item": "minecraft:peony",
+        "tag": "{CustomModelData: 2}"
+    },
+    "order": 0,
+    "impact": 3,
+    "name": "Spore Blossom",
+    "description": "A lovely flower that became sentient."
+}

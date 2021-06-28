@@ -1,0 +1,203 @@
+{
+    "type": "origins:multiple",
+    "cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 300,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/resource_bar.png",
+            "bar_index": 8
+        }
+    },
+    "throw": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "function origins-spore-blossom:projectile/setup"
+        },
+        "cooldown": 200,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/resource_bar.png",
+            "bar_index": 8
+        },
+        "key": {
+            "key": "key.attack"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:air"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "place": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "function origins-spore-blossom:marker/setup"
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.use"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:air"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "offhand",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:air"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "trigger_cooldown": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "rising_action": {
+            "type": "origins:trigger_cooldown",
+            "power": "*:*_cooldown"
+        },
+        "condition": {
+            "type": "origins:scoreboard",
+            "objective": "o-s-b.bool",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "cycle": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "rising_action": {
+            "type": "origins:execute_command",
+            "command": "scoreboard players set @s o-s-b.bool 0"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_cooldown",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:scoreboard",
+                    "objective": "o-s-b.bool",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        }
+    },
+    "break_bulbs_exception": {
+        "type": "origins:action_on_block_break",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "tag @s add o-s-b.exception"
+        },
+        "block_condition": {
+            "type": "origins:block",
+            "block": "minecraft:structure_void"
+        },
+        "only_when_harvested": false
+    },
+    "break_bulbs": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:command",
+                        "command": "execute if entity @s[tag = o-s-b.exception]",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "if_action": {
+                        "type": "origins:damage",
+                        "amount": 4,
+                        "source": {
+                            "name": "spore_blossom.connected_damage",
+                            "bypasses_armor": true,
+                            "unblockable": true
+                        }
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players set @s o-s-b.dmgb 0"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s remove o-s-b.exception"
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:scoreboard",
+            "objective": "o-s-b.dmgb",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "init": {
+        "type": "origins:action_on_callback",
+        "entity_action_chosen": {
+            "type": "origins:execute_command",
+            "command": "loot replace entity @s armor.head loot origins-spore-blossom:item"
+        },
+        "entity_action_lost": {
+            "type": "origins:execute_command",
+            "command": "clear @s minecraft:peony{eggohito: {o-s-b: {sporeBlossom: 1b}}}"
+        },
+        "entity_action_respawned": {
+            "type": "origins:execute_command",
+            "command": "loot replace entity @s armor.head loot origins-spore-blossom:item"
+        }
+    },
+    "name": "Spore Network",
+    "description": "With you being a superiour Spore Blossom, you can create 'networks' and weaponize spore blossoms. \n\n* You can plant a spore bulb to the block you're looking at by sneaking and right-clicking with an empty mainhand and offhand. \n\n* You can throw exploding bulbs by sneaking and punching with an empty mainhand. \n\n* Planted spore blossoms can heal nearby mobs. \n\n* You can teleport to your nearby (within a 64 blocks radius) mature, planted spore blossoms by standing in one, and typing in '/trigger o-s-b.tp_to <value>' where <value> being a number ranging from 1 to 2147483647. \n\n* Other players breaking your spore blossoms can damage/kill you."
+}
