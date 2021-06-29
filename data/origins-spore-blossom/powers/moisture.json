@@ -3,8 +3,8 @@
     "bar": {
         "type": "origins:resource",
         "min": 0,
-        "max": 100,
-        "start_value": 50,
+        "max": 300,
+        "start_value": 150,
         "hud_render": {
             "should_render": true,
             "sprite_location": "origins:textures/gui/resource_bar.png",
@@ -65,12 +65,12 @@
                         "type": "origins:resource",
                         "resource": "*:*_bar",
                         "comparison": "<",
-                        "compare_to": 50
+                        "compare_to": 150
                     },
                     "action": {
                         "type": "origins:change_resource",
                         "resource": "*:*_bar",
-                        "change": 1
+                        "change": 4
                     }
                 },
                 {
@@ -78,12 +78,12 @@
                         "type": "origins:resource",
                         "resource": "*:*_bar",
                         "comparison": ">",
-                        "compare_to": 50
+                        "compare_to": 150
                     },
                     "action": {
                         "type": "origins:change_resource",
                         "resource": "*:*_bar",
-                        "change": -1
+                        "change": -4
                     }
                 }
             ]
@@ -103,13 +103,13 @@
                             "type": "origins:resource",
                             "resource": "*:*_moisture_bar",
                             "comparison": ">",
-                            "compare_to": 50
+                            "compare_to": 150
                         },
                         {
                             "type": "origins:resource",
                             "resource": "*:*_moisture_bar",
                             "comparison": "<",
-                            "compare_to": 50
+                            "compare_to": 150
                         }
                     ]
                 }
@@ -121,13 +121,19 @@
         "entity_action": {
             "type": "origins:change_resource",
             "resource": "*:*_bar",
-            "change": 5
+            "change": 60
         },
         "item_condition": {
             "type": "origins:ingredient",
             "ingredient": {
                 "tag": "origins-spore-blossom:valid_drinks"
             }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bar",
+            "comparison": "<",
+            "compare_to": 240
         }
     },
     "invalid_drink": {
@@ -136,9 +142,18 @@
             "type": "origins:and",
             "actions": [
                 {
-                    "type": "origins:change_resource",
-                    "resource": "*:*_bar",
-                    "change": 5
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_bar",
+                        "comparison": "<",
+                        "compare_to": 240
+                    },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": 60
+                    }
                 },
                 {
                     "type": "origins:trigger_cooldown",
@@ -179,12 +194,74 @@
     "increase_const1": {
         "type": "origins:action_over_time",
         "entity_action": {
-            "type": "origins:and",
+            "type": "origins:if_else_list",
             "actions": [
                 {
-                    "type": "origins:change_resource",
-                    "resource": "*:*_bar",
-                    "change": 1
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "origins:water_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": 3
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "origins:water_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": 2
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "origins:water_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 3
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": 1
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:enchantment",
+                                "enchantment": "origins:water_protection",
+                                "calculation": "sum",
+                                "comparison": "==",
+                                "compare_to": 4
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_bar",
+                                "comparison": "<",
+                                "compare_to": 270
+                            }
+                        ]
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": 1
+                    }
                 }
             ]
         },
@@ -228,8 +305,11 @@
                         {
                             "type": "origins:in_block_anywhere",
                             "block_condition": {
-                                "type": "origins:block",
-                                "block": "minecraft:water"
+                                "type": "origins:fluid",
+                                "fluid_condition": {
+                                    "type": "origins:in_tag",
+                                    "tag": "minecraft:water"
+                                }
                             },
                             "comparison": ">",
                             "compare_to": 0
@@ -260,12 +340,63 @@
     "increase_const2": {
         "type": "origins:action_over_time",
         "entity_action": {
-            "type": "origins:and",
+            "type": "origins:if_else_list",
             "actions": [
                 {
-                    "type": "origins:change_resource",
-                    "resource": "*:*_bar",
-                    "change": 1
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "origins:water_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": 4
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "origins:water_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": 3
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "origins:water_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 3
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": 2
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "origins:water_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 4
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": 1
+                    }
                 }
             ]
         },
@@ -311,12 +442,74 @@
     "decrease_const1": {
         "type": "origins:action_over_time",
         "entity_action": {
-            "type": "origins:and",
+            "type": "origins:if_else_list",
             "actions": [
                 {
-                    "type": "origins:change_resource",
-                    "resource": "*:*_bar",
-                    "change": -1
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "minecraft:fire_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": -3
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "minecraft:fire_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": -2
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "minecraft:fire_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 3
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": -1
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:enchantment",
+                                "enchantment": "minecraft:fire_protection",
+                                "calculation": "sum",
+                                "comparison": "==",
+                                "compare_to": 4
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_bar",
+                                "comparison": ">",
+                                "compare_to": 30
+                            }
+                        ]
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": -1
+                    }
                 }
             ]
         },
@@ -354,6 +547,10 @@
                         },
                         {
                             "type": "origins:power_active",
+                            "power": "*:*_decrease_const3"
+                        },
+                        {
+                            "type": "origins:power_active",
                             "power": "*:*_in_moisture_biome"
                         }
                     ],
@@ -365,12 +562,63 @@
     "decrease_const2": {
         "type": "origins:action_over_time",
         "entity_action": {
-            "type": "origins:and",
+            "type": "origins:if_else_list",
             "actions": [
                 {
-                    "type": "origins:change_resource",
-                    "resource": "*:*_bar",
-                    "change": -1
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "minecraft:fire_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": -4
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "minecraft:fire_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": -3
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "minecraft:fire_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 2
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": -2
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "minecraft:fire_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 4
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": -1
+                    }
                 }
             ]
         },
@@ -400,6 +648,10 @@
                         },
                         {
                             "type": "origins:power_active",
+                            "power": "*:*_increase_const2"
+                        },
+                        {
+                            "type": "origins:power_active",
                             "power": "*:*_in_moisture_biome"
                         }
                     ],
@@ -408,14 +660,6 @@
                 {
                     "type": "origins:or",
                     "conditions": [
-                        {
-                            "type": "origins:biome",
-                            "condition": {
-                                "type": "origins:temperature",
-                                "comparison": ">=",
-                                "compare_to": 1
-                            }
-                        },
                         {
                             "type": "origins:block_in_radius",
                             "block_condition": {
@@ -426,8 +670,11 @@
                                         "tag": "minecraft:fire"
                                     },
                                     {
-                                        "type": "origins:block",
-                                        "block": "minecraft:lava"
+                                        "type": "origins:fluid",
+                                        "fluid_condition": {
+                                            "type": "origins:in_tag",
+                                            "tag": "minecraft:lava"
+                                        }
                                     },
                                     {
                                         "type": "origins:and",
@@ -455,6 +702,112 @@
             ]
         }
     },
+    "decrease_const3": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "minecraft:fire_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": -3
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:enchantment",
+                        "enchantment": "minecraft:fire_protection",
+                        "calculation": "sum",
+                        "comparison": "==",
+                        "compare_to": 3
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": -2
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:enchantment",
+                                "enchantment": "minecraft:fire_protection",
+                                "calculation": "sum",
+                                "comparison": "==",
+                                "compare_to": 4
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_bar",
+                                "comparison": ">",
+                                "compare_to": 30
+                            }
+                        ]
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_bar",
+                        "change": -1
+                    }
+                }
+            ]
+        },
+        "interval": 30,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "survival"
+                        },
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "adventure"
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:power_active",
+                            "power": "*:*_increase_const1"
+                        },
+                        {
+                            "type": "origins:power_active",
+                            "power": "*:*_increase_const2"
+                        },
+                        {
+                            "type": "origins:power_active",
+                            "power": "*:*_in_moisture_biome"
+                        }
+                    ],
+                    "inverted": true
+                },
+                {
+                    "type": "origins:biome",
+                    "condition": {
+                        "type": "origins:temperature",
+                        "comparison": ">=",
+                        "compare_to": 1
+                    }
+                }
+            ]
+        }
+    },
     "drown": {
         "type": "origins:damage_over_time",
         "interval": 20,
@@ -469,7 +822,7 @@
             "type": "origins:resource",
             "resource": "*:*_bar",
             "comparison": "==",
-            "compare_to": 100
+            "compare_to": 300
         }
     },
     "dryout": {
@@ -493,7 +846,7 @@
         "type": "origins:action_on_callback",
         "entity_action_respawned": {
             "type": "origins:execute_command",
-            "command": "resource set @s origins-spore-blossom:moisture_bar 50"
+            "command": "resource set @s origins-spore-blossom:moisture_bar 150"
         }
     },
     "name": "Moisture",
