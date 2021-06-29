@@ -6,11 +6,19 @@
 
 
 #
+#   Save the coordinates of the chunk the marker is residing in
+#
+execute at @e[tag = o-s-b.marker_init, limit = 1] run function origins-spore-blossom:marker/chunk/save
+
+
+#
 #   Set up dynamic ID of the spore blossom
 #
 scoreboard players operation @e[tag = o-s-b.marker_init, limit = 1] o-s-b.bID = @s o-s-b.pID
 
 execute as @e[tag = o-s-b.marker_init, limit = 1] run function origins-spore-blossom:id/dynamic_network/set
+
+execute at @e[tag = o-s-b.marker_init, limit = 1] run playsound minecraft:block.spore_blossom.place block @a ~ ~ ~
 
 tag @e remove o-s-b.marker_init
 

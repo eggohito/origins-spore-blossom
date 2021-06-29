@@ -1,10 +1,10 @@
-#> origins-spore-blossom:marker/check_dim/loop
+#> origins-spore-blossom:marker/dim_check/loop
 #
 #   > Check if the input string matches one of the set 'hot dimension' strings
 #
 #@within
-#   function origins-spore-blossom:marker/check_dim/init
-#   function origins-spore-blossom:marker/check_dim/loop
+#   function origins-spore-blossom:marker/dim_check/init
+#   function origins-spore-blossom:marker/dim_check/loop
 
 
 #
@@ -29,6 +29,6 @@ data remove storage origins-spore-blossom:internal root.dim_tmp.hot_dims[-1]
 #
 #   Call `*:/marker/check_dim/end` function if the string matches, otherwise, loop the function until there's no more string to compare from
 #
-execute if score #notHotDimension o-s-b matches 0 run function origins-spore-blossom:marker/check_dim/end
+execute if score #notHotDimension o-s-b matches 0 run function origins-spore-blossom:marker/dim_check/end
 
-execute if score #notHotDimension o-s-b matches 1 if score #iterationCount o-s-b matches 1.. run function origins-spore-blossom:marker/check_dim/loop
+execute if score #notHotDimension o-s-b matches 1 if score #iterationCount o-s-b matches 1.. run function origins-spore-blossom:marker/dim_check/loop
