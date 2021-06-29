@@ -7,7 +7,7 @@
 
 setblock ~ ~ ~ structure_void
 
-summon item_frame ~ ~ ~ {Tags: ["o-s-b.marker", "o-s-b.marker_init", "o-s-b.marker_immature", "o-s-b.marker_x_plus"], Item: {id: "minecraft:peony", Count: 1b, tag: {CustomModelData: 1}}, Invisible: 1b, Facing: 5b, Fixed: 1b}
+summon item_frame ~ ~ ~ {Silent: 1b, Tags: ["o-s-b.marker", "o-s-b.marker_init", "o-s-b.marker_immature", "o-s-b.marker_x_plus"], Item: {id: "minecraft:peony", Count: 1b, tag: {CustomModelData: 1}}, Invulnerable: 1b, Invisible: 1b, Facing: 5b, Fixed: 1b}
 
 
 function origins-spore-blossom:marker/place/finalize
