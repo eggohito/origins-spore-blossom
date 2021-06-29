@@ -88,6 +88,10 @@
     },
     "tough_stuff": {
         "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:fire",
+            "inverted": true
+        },
         "modifier": {
             "operation": "multiply_total",
             "value": -0.25
