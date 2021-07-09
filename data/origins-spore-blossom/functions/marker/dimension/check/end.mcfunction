@@ -1,4 +1,4 @@
-#> origins-spore-blossom:marker/dim_check/end
+#> origins-spore-blossom:marker/dimension/check/end
 #
 #   > End the dimension check
 #

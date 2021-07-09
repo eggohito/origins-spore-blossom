@@ -1,4 +1,4 @@
-#> origins-spore-blossom:marker/regen
+#> origins-spore-blossom:marker/apply_effects
 #
 #   > Apply the regeneration effect to nearby mobs
 #

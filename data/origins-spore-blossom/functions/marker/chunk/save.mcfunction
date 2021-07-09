@@ -17,9 +17,9 @@ function origins-spore-blossom:marker/chunk/get
 scoreboard players set #isChunkSaved o-s-b 0
 
 
-data modify storage origins-spore-blossom:internal root.check.chunk set from storage origins-spore-blossom:internal root.saved_chunks
+data modify storage origins-spore-blossom:internal root.process.saved_chunks set from storage origins-spore-blossom:internal root.saved_chunks
 
-execute store result score #savedChunks o-s-b run data get storage origins-spore-blossom:internal root.check.chunk
+execute store result score #savedChunks o-s-b run data get storage origins-spore-blossom:internal root.process.saved_chunks
 
 execute if score #savedChunks o-s-b matches 1.. run function origins-spore-blossom:marker/chunk/save/loop
 

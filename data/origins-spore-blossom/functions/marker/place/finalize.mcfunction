@@ -8,7 +8,7 @@
 #
 #   Save the coordinates of the chunk the marker is residing in
 #
-execute at @e[tag = o-s-b.marker_init, limit = 1] run function origins-spore-blossom:marker/chunk/save
+execute as @e[tag = o-s-b.marker_init, limit = 1] at @s run function origins-spore-blossom:marker/chunk/save
 
 
 #
@@ -28,4 +28,4 @@ tag @e remove o-s-b.marker_init
 #
 scoreboard players add @s o-s-b.ns 1
 
-scoreboard players set @s o-s-b.bool 1
+scoreboard players set @s o-s-b.placed 1

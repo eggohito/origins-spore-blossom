@@ -8,7 +8,7 @@
 #
 #   Add a tag to indicate 'self'
 #
-tag @s add o-s-b.self
+tag @s add self
 
 
 #
@@ -22,4 +22,4 @@ execute as @a if score @s o-s-b.pID = #currentBlossomID o-s-b run function origi
 #
 #   Remove the tag that indicates 'self'
 #
-tag @s remove o-s-b.self
+tag @s remove self

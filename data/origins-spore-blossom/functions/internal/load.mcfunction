@@ -19,9 +19,9 @@ tellraw @a {"translate": "[Spore Blossom (Origins)] Please apply the resourcepac
 scoreboard objectives add o-s-b dummy {"text": "o-s-b (main)"}
 
 
-scoreboard objectives add o-s-b.bt dummy {"text": "o-s-b.bt (Blossom Timer)"}
+scoreboard objectives add o-s-b.t dummy {"text": "o-s-b.t (Blossom Ticks)"}
 
-scoreboard objectives add o-s-b.bts dummy {"text": "o-s-b.bts (Blossom Ticks)"}
+scoreboard objectives add o-s-b.it dummy {"text": "o-s-b.it (Blossom Interval Ticks)"}
 
 
 scoreboard objectives add o-s-b.ns dummy {"text": "o-s-b.ns (Network Size)"}
@@ -33,7 +33,7 @@ scoreboard objectives add o-s-b.bID dummy {"text": "o-s-b.bID (Blossom ID)"}
 scoreboard objectives add o-s-b.nID dummy {"text": "o-s-b.nID (Network ID)"}
 
 
-scoreboard objectives add o-s-b.bool dummy {"text": "o-s-b.bool (Boolean)"}
+scoreboard objectives add o-s-b.placed dummy {"text": "o-s-b.placed (Placed Spore Blossom)"}
 
 scoreboard objectives add o-s-b.dmgb dummy {"text": "o-s-b.dmgb (Damaged Bulb)"}
 

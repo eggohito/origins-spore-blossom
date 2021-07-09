@@ -10,17 +10,17 @@
 #
 #   Store the chunk coordinates of the selected index to scoreboard
 #
-data modify storage origins-spore-blossom:internal root.check.dimension set from storage origins-spore-blossom:internal root.current_dimension
+data modify storage origins-spore-blossom:internal root.process.current_dimension_copy set from storage origins-spore-blossom:internal root.process.current_dimension
 
-execute store success score #dimDoesntMatch o-s-b run data modify storage origins-spore-blossom:internal root.check.dimension set from storage origins-spore-blossom:internal root.check.chunk[-1].dimension
-
-
-execute if score #dimDoesntMatch o-s-b matches 0 store result score #chunkComparingToX o-s-b run data get storage origins-spore-blossom:internal root.check.chunk[-1].coordinates[0]
-
-execute if score #dimDoesntMatch o-s-b matches 0 store result score #chunkComparingToZ o-s-b run data get storage origins-spore-blossom:internal root.check.chunk[-1].coordinates[1]
+execute store success score #dimDoesntMatch o-s-b run data modify storage origins-spore-blossom:internal root.process.current_dimension_copy set from storage origins-spore-blossom:internal root.process.saved_chunks[-1].dimension
 
 
-data remove storage origins-spore-blossom:internal root.check.chunk[-1]
+execute if score #dimDoesntMatch o-s-b matches 0 store result score #chunkComparingToX o-s-b run data get storage origins-spore-blossom:internal root.process.saved_chunks[-1].x
+
+execute if score #dimDoesntMatch o-s-b matches 0 store result score #chunkComparingToZ o-s-b run data get storage origins-spore-blossom:internal root.process.saved_chunks[-1].z
+
+
+data remove storage origins-spore-blossom:internal root.process.saved_chunks[-1]
 
 
 #
