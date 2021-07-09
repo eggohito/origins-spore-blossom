@@ -183,12 +183,24 @@
             "compare_to": 1
         }
     },
+    "chosen": {
+        "type": "origins:action_over_time",
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "function origins-spore-blossom:init/chosen"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "resource change @s origins-spore-blossom:spore_network_cooldown 1000"
+                }
+            ]
+        }
+    },
     "init": {
         "type": "origins:action_on_callback",
-        "entity_action_chosen": {
-            "type": "origins:execute_command",
-            "command": "function origins-spore-blossom:init/chosen"
-        },
         "entity_action_lost": {
             "type": "origins:execute_command",
             "command": "function origins-spore-blossom:init/lost"
@@ -199,5 +211,5 @@
         }
     },
     "name": "Spore Network",
-    "description": "With you being a superiour Spore Blossom, you can create 'networks' and weaponize spore blossoms. \n\n* You can plant a spore bulb to the block you're looking at by sneaking and right-clicking with an empty mainhand and offhand. \n\n* You can throw exploding bulbs by sneaking and punching with an empty mainhand. \n\n* Planted spore blossoms can heal nearby mobs. \n\n* You can teleport to your nearby (within a 64 blocks radius) mature, planted spore blossoms by standing in one, and typing in '/trigger o-s-b.tp_to <value>' where <value> being a number ranging from 1 to 2147483647. \n\n* Other players breaking your spore blossoms can damage/kill you."
+    "description": "With you being a superior Spore Blossom, you can create 'networks' and weaponize spore blossoms. \n\n* You can plant a spore bulb to the block you're looking at by sneaking and right-clicking with an empty mainhand and offhand. \n\n* You can throw exploding bulbs by sneaking and punching with an empty mainhand. \n\n* Planted spore blossoms can heal nearby mobs. \n\n* You can teleport to your nearby (within a 64 blocks radius) mature, planted spore blossoms by standing in one, and typing in '/trigger o-s-b.tp_to <value>' where <value> being a number ranging from 1 to 2147483647. \n\n* Other players breaking your spore blossoms can damage/kill you."
 }
