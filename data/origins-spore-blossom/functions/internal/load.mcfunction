@@ -45,7 +45,7 @@ scoreboard objectives add o-s-b.tp_to trigger {"text": "o-s-b.tp_to (Teleport to
 #
 execute unless score #load o-s-b = #load o-s-b run function origins-spore-blossom:.conf/default
 
-function origins-spore-blossom:internal/load_def_chunks
+function origins-spore-blossom:init/dimension
 
 
 scoreboard players set #load o-s-b 1
