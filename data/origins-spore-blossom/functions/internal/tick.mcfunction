@@ -10,7 +10,7 @@
 #
 #   Kill the Spore Blossom item entity if dropped, and check if the score of the variables/constants have changed
 #
-kill @e[type = item, nbt = {Item: {tag: {eggohito: {o-s-b: {sporeBlossom: 1b}}}}}]
+kill @e[type = item, nbt = {Item: {tag: {eggohito: {origins-spore-blossom: {item_type: "spore_blossom"}}}}}]
 
 
 execute unless score $rootMaxHeight o-s-b = #rootMaxHeight.tmp o-s-b run function origins-spore-blossom:internal/calc_vars

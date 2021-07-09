@@ -32,7 +32,7 @@
                 },
                 {
                     "function": "minecraft:set_nbt",
-                    "tag": "{Enchantments: [{id: \"minecraft:binding_curse\", lvl: 1s}], eggohito: {o-s-b: {sporeBlossom: 1b}}, HideFlags: 1, CustomModelData: 2}"
+                    "tag": "{Enchantments: [{id: \"minecraft:binding_curse\", lvl: 1s}], eggohito: {origins-spore-blossom: {item_type: \"spore_blossom\"}}, HideFlags: 1, CustomModelData: 2}"
                 }
             ]
         }
