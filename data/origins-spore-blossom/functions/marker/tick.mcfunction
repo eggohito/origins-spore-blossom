@@ -20,17 +20,17 @@ scoreboard players operation @s o-s-b.bt %= $fullyGrownTicks o-s-b
 #
 #   Check if the spore blossom marker has a valid structure
 #
-execute if entity @s[tag = o-s-b.marker_x_minus, predicate = !origins-spore-blossom:has_structure/x_minus] run function origins-spore-blossom:marker/no_base/kill
+execute if entity @s[tag = o-s-b.marker_x_minus, predicate = !origins-spore-blossom:has_structure/x_minus] run function origins-spore-blossom:marker/destroy/kill
 
-execute if entity @s[tag = o-s-b.marker_x_plus, predicate = !origins-spore-blossom:has_structure/x_plus] run function origins-spore-blossom:marker/no_base/kill
+execute if entity @s[tag = o-s-b.marker_x_plus, predicate = !origins-spore-blossom:has_structure/x_plus] run function origins-spore-blossom:marker/destroy/kill
 
-execute if entity @s[tag = o-s-b.marker_y_minus, predicate = !origins-spore-blossom:has_structure/y_minus] run function origins-spore-blossom:marker/no_base/kill
+execute if entity @s[tag = o-s-b.marker_y_minus, predicate = !origins-spore-blossom:has_structure/y_minus] run function origins-spore-blossom:marker/destroy/kill
 
-execute if entity @s[tag = o-s-b.marker_y_plus, predicate = !origins-spore-blossom:has_structure/y_plus] run function origins-spore-blossom:marker/no_base/kill
+execute if entity @s[tag = o-s-b.marker_y_plus, predicate = !origins-spore-blossom:has_structure/y_plus] run function origins-spore-blossom:marker/destroy/kill
 
-execute if entity @s[tag = o-s-b.marker_z_minus, predicate = !origins-spore-blossom:has_structure/z_minus] run function origins-spore-blossom:marker/no_base/kill
+execute if entity @s[tag = o-s-b.marker_z_minus, predicate = !origins-spore-blossom:has_structure/z_minus] run function origins-spore-blossom:marker/destroy/kill
 
-execute if entity @s[tag = o-s-b.marker_z_plus, predicate = !origins-spore-blossom:has_structure/z_plus] run function origins-spore-blossom:marker/no_base/kill
+execute if entity @s[tag = o-s-b.marker_z_plus, predicate = !origins-spore-blossom:has_structure/z_plus] run function origins-spore-blossom:marker/destroy/kill
 
 
 #

@@ -2,9 +2,7 @@
 #
 #   > Kill the marker entity, and do a cleanup
 #
-#@within
-#   * origins-spore-blossom:marker/no_base/finalize
-#   * origins-spore-blossom:marker/has_base/finalize
+#@within function origins-spore-blossom:marker/destroy/finalize
 
 
 #

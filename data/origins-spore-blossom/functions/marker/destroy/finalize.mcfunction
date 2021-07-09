@@ -1,8 +1,8 @@
-#> origins-spore-blossom:marker/no_base/finalize
+#> origins-spore-blossom:marker/destroy/finalize
 #
 #   > Damage the player, and kill the marker
 #
-#@within function origins-spore-blossom:marker/no_base/kill
+#@within function origins-spore-blossom:marker/destroy/kill
 
 
 #
