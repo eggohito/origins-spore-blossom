@@ -10,11 +10,12 @@
 #
 scoreboard players add @s o-s-b.t 1
 
-scoreboard players operation @s o-s-b.it = @s o-s-b.t
+scoreboard players add @s o-s-b.it 1
 
-scoreboard players operation @s o-s-b.it %= $effectInterval o-s-b
 
 scoreboard players operation @s o-s-b.t %= $fullyGrownTicks o-s-b
+
+scoreboard players operation @s o-s-b.it %= $effectInterval o-s-b
 
 
 #
