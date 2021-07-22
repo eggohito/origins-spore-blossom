@@ -45,43 +45,6 @@
             "fluid": "minecraft:water"
         }
     },
-    "restrict_food_items": {
-        "type": "origins:prevent_item_use",
-        "item_condition": {
-            "type": "origins:food"
-        }
-    },
-    "sunlight_feeding_cooldown": {
-        "type": "origins:cooldown",
-        "cooldown": 200,
-        "hud_render": {
-            "should_render": false
-        }
-    },
-    "sunlight_feeding": {
-        "type": "origins:action_over_time",
-        "entity_action": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:trigger_cooldown",
-                    "power": "*:*_sunlight_feeding_cooldown"
-                },
-                {
-                    "type": "origins:feed",
-                    "food": 1,
-                    "saturation": 1.0
-                }
-            ]
-        },
-        "interval": 1,
-        "condition": {
-            "type": "origins:resource",
-            "resource": "*:*_sunlight_feeding_cooldown",
-            "comparison": "==",
-            "compare_to": 0
-        }
-    },
     "name": "Plant-like Nature",
     "description": "Due to your plant-like nature, you can't eat any food items. You can only satiate yourself if you're exposed to the sun. \n\n* You also burn easily, making you take 25% more damage from damage sources related to fire."
 }
