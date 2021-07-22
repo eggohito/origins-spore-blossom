@@ -8,7 +8,7 @@
 #
 #   Save the coordinates of the chunk the marker is residing in
 #
-execute as @e[tag = o-s-b.marker_init, limit = 1] at @s run function origins-spore-blossom:marker/chunk/save
+execute at @e[tag = o-s-b.marker_init, limit = 1] run forceload add ~ ~
 
 
 #

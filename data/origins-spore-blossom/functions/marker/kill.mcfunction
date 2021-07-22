@@ -6,9 +6,15 @@
 
 
 #
-#   Remove the coordinates of the chunk the marker is residing in
+#   Remove the coordinates of the chunk the marker is residing in, and do cosmetic stuff
 #
-execute as @e[tag = self, tag = o-s-b.marker] at @s run function origins-spore-blossom:marker/chunk/delete/current
+kill @s
+
+execute if block ~ ~ ~ structure_void run setblock ~ ~ ~ air
+
+function origins-spore-blossom:marker/chunk/get_blossoms
+
+execute if score #sporeBlossomCount o-s-b matches 0 run forceload remove ~ ~
 
 
 execute align xyz run particle item peony{CustomModelData: 1} ~0.5 ~ ~0.5 0.5 0.5 0.5 0.09 32 normal @a

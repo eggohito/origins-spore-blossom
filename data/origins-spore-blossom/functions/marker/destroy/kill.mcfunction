@@ -2,7 +2,9 @@
 #
 #   > Kill the marker (and deal damage to the player who owns the spore blossom)
 #
-#@within function origins-spore-blossom:marker/tick
+#@within
+#   function origins-spore-blossom:marker/tick
+#   function origins-spore-blossom:kill_all
 
 
 #

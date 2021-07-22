@@ -10,7 +10,7 @@
 #
 tellraw @a[tag = o-s-b.debugger] {"text": "[+ Loaded \"Spore Blossom (Origins)\"]", "color": "green"}
 
-tellraw @a {"translate": "[Spore Blossom (Origins)] Please apply the resourcepack to see the custom assets!", "color": "red"}
+execute unless score #load o-s-b = #load o-s-b run tellraw @a {"translate": "[Spore Blossom (Origins)] Please apply the resourcepack to see the custom assets!", "color": "red"}
 
 
 #
@@ -44,8 +44,6 @@ scoreboard objectives add o-s-b.tp_to trigger {"text": "o-s-b.tp_to (Teleport to
 #   Set consts/vars
 #
 execute unless score #load o-s-b = #load o-s-b run function origins-spore-blossom:.conf/default
-
-function origins-spore-blossom:init/dimension
 
 
 scoreboard players set #load o-s-b 1

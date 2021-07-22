@@ -10,7 +10,7 @@
 #
 scoreboard players remove @s o-s-b.ns 1
 
-scoreboard players set @s o-s-b.dmgb 1
+scoreboard players set @s[tag = !o-s-b.exception] o-s-b.dmgb 1
 
 
-function origins-spore-blossom:marker/kill
+execute as @e[tag = self, tag = o-s-b.marker] run function origins-spore-blossom:marker/kill
