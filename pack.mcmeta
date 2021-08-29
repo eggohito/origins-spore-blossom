@@ -1,0 +1,10 @@
+{
+    "pack": {
+        "pack_format": 7,
+        "version": "1.0.0",
+        "authors": [
+            "eggohito"
+        ],
+        "description": "A bundlepack that adds the Spore Blossom origin"
+    }
+}
