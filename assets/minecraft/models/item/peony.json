@@ -1,0 +1,26 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "minecraft:block/peony_top"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "custom_model_data": 1
+            },
+            "model": "origins-spore-blossom:closed"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 2
+            },
+            "model": "origins-spore-blossom:opened"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 3
+            },
+            "model": "origins-spore-blossom:placeholder"
+        }
+    ]
+}
