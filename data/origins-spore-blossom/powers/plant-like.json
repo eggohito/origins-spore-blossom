@@ -1,0 +1,50 @@
+{
+    "type": "origins:multiple",
+    "combustible_multiply_dmg": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:fire"
+        },
+        "modifier": {
+            "operation": "multiply_total",
+            "value": 0.25,
+            "name": "Oof, ow, ouch! I'm burning!"
+        }
+    },
+    "combustible_dryout": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:moisture_bar",
+                    "change": -5
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "advancement revoke @s only origins-spore-blossom:hurt_by_fire"
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:advancement",
+            "advancement": "origins-spore-blossom:hurt_by_fire"
+        }
+    },
+    "unlimited_air": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:gain_air",
+            "value": 200
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water"
+        }
+    },
+    "name": "Plant-like Nature",
+    "description": "Due to your plant-like nature, you burn easily, making you take 25% more damage from damage sources related to fire."
+}
