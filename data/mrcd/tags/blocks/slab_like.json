@@ -1,0 +1,6 @@
+{
+  "values":[
+    "#minecraft:slabs",
+    {"id": "minecraft:sculk_sensor", "required": false}
+  ]
+}

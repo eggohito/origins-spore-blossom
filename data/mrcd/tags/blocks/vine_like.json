@@ -1,0 +1,5 @@
+{"values":[
+    "minecraft:vine",
+    "minecraft:fire",
+    {"id": "minecraft:glow_lichen", "required": false}
+]}
